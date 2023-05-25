@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <commonFunction.h>
 using namespace std;
 
 int main(){
