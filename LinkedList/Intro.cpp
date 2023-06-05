@@ -1,0 +1,177 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+class Node{
+    public:
+    Node* next;
+    int data;
+     Node(int val){
+        this->data = val;
+        this->next = NULL;
+     }
+};
+
+int getDecimalValue(Node* head) {
+        int finalAns = 0;
+        while(head){
+            finalAns= finalAns*2+head->data;
+            cout<<head->data;
+            head = head->next;
+            cout<<" "<<finalAns<<endl;
+        }
+        // finalAns+= finalAns*2+head->val;
+        return finalAns;
+    }
+
+void printList(Node* head){
+    while(head!=NULL){
+        cout<<head->data<<" -> ";
+        head = head->next;
+    }
+    cout<<"NULL"<<endl;
+
+}
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+
+    Node* rev(Node *head){
+        if(head->next == NULL || head == NULL){
+            return head;
+        }
+        Node* h = NULL;
+        Node* ptr = rev(head->next);
+        ptr = head;
+    }
+    Node* reverseLinked(Node* head){
+        Node* h = NULL;
+        rev(head->next);
+        printList(head);
+        // return head; 
+    }
+
+    Node* mergeNodes(Node* head) {
+        Node* ans = new Node(-1);
+        Node* ptr = ans;
+        head = head->next;
+        int sum=0;
+        while(head){
+            if(head->data){
+                sum+=head->data;
+            }
+            else{
+                Node* p = new Node(sum);
+                ptr->next = p;
+                ans=ptr;
+                sum=0;
+            }
+                head = head->next;
+        }
+        return ans->next;
+        
+    }
+};
+
+Node* rev(Node* head){
+
+}
+
+void mergeList(Node* head1, Node* head2){
+    while(head1 && head2){
+        if(head1->data <= head2->data){
+            cout<<head1->data<<" -> ";
+            head1 = head1->next;
+        }
+        else{
+            cout<<head2->data<<" -> ";
+            head2 = head2->next;
+        }
+    }
+    while(head1){
+        cout<<head1->data<<" -> ";
+        head1 = head1->next;
+    }
+    while(head2){
+        cout<<head2->data<<" -> ";
+        head2 = head2->next;
+    }
+}
+
+Node * insertionStart(Node * head, int val){
+    Node* temp = head;
+    Node* ptr = new Node(val);
+    ptr->next = head;
+    head = ptr;
+    return ptr;
+}
+
+Node * insertionLast(Node * head, int val){
+    Node* temp = head;
+    Node* ptr = new Node(val);
+    while(head->next){
+        head = head->next;
+    }
+    head->next = ptr;
+    return temp;
+}
+
+Node * insertionIndex(Node * head, int val, int i){
+    Node* temp = head;
+    Node* ptr = new Node(val);
+    int index=0;
+    while(index < i-1){
+        head = head->next;
+        index++;
+    }
+    if(head){
+        ptr->next = head->next;
+        head->next = ptr;
+        return temp;
+    }
+    else{
+        cout<<"Not a Valid Index!!!";
+    }
+}
+
+
+int main(){
+    Node* list = new Node(1);
+    Node* list1 = new Node(2);
+    Node* list2 = new Node(3);
+    Node* list3 = new Node(4);
+    Node* list4 = new Node(5);
+    // Node* list3 = new Node(12);
+    // Node* list4 = new Node(15);
+    // Node* list5 = new Node(17);
+    list->next=list1;
+    list1->next=list2;
+    list2->next = list3;
+    list3->next = list4;
+    // list4->next = list5;
+    printList(list);
+    // getDecimalValue(list);
+    // list = insertionStart(list, 56);
+    // printList(list);
+    // list = insertionLast(list, 100);
+    // printList(list);
+    // list = insertionIndex(list, 99, 2);
+    // mergeList(list, list3);
+    // printList(list);
+    Solution sol;
+    sol.reverseLinked(list);
+
+    return 0;
+}
