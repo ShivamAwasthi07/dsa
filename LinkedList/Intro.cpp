@@ -85,10 +85,6 @@ public:
     }
 };
 
-Node* rev(Node* head){
-
-}
-
 void mergeList(Node* head1, Node* head2){
     while(head1 && head2){
         if(head1->data <= head2->data){
@@ -146,6 +142,13 @@ Node * insertionIndex(Node * head, int val, int i){
     }
 }
 
+Node * delFirst(Node* head){
+    Node* temp = head;
+    head = head->next;
+    temp->next=NULL;
+    free(temp);
+    return head;
+}
 
 int main(){
     Node* list = new Node(1);
@@ -162,16 +165,7 @@ int main(){
     list3->next = list4;
     // list4->next = list5;
     printList(list);
-    // getDecimalValue(list);
-    // list = insertionStart(list, 56);
-    // printList(list);
-    // list = insertionLast(list, 100);
-    // printList(list);
-    // list = insertionIndex(list, 99, 2);
-    // mergeList(list, list3);
-    // printList(list);
-    Solution sol;
-    sol.reverseLinked(list);
-
+    list = delFirst(list);
+    printList(list);
     return 0;
 }
