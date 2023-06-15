@@ -30,14 +30,17 @@ class Solution{
 };
 
 int main(){
-Solution sol;
-stack <int> st;
-st.push(5);
-st.push(3);
-st.push(-1);
-st.push(10);
-st.push(8);
-sol.sortAStack(st);
-cout<<st.top() ;
+    // Solution sol;
+    // vector <int> v;
+    // v.push_back
+    // priority_queue <int> st;
+    // st.push(5);
+    // st.push(3);
+    // st.push(-1);
+    // st.push(10);
+    // st.push(8);
+    // sol.sortAStack(st);
+    // st.pop();
+    // cout<<st.top();
     return 0;
 }
