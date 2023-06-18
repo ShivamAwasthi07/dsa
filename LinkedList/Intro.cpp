@@ -150,22 +150,79 @@ Node * delFirst(Node* head){
     return head;
 }
 
+Node * AddLinkedList(Node* first, Node* second){
+    if(first == NULL){
+        return second;
+    }
+    if(second == NULL){
+        return first;
+    }
+
+    Node* result = new Node(-1);
+    Node* ans = new Node(0);
+    result->next =ans;
+
+    Node* f = first;
+    Node* s = second;
+    int carry=0,a=0,b=0;
+    while(f || s){
+        if(f){
+            a=f->data;
+        }
+        else{
+            a=0;
+        }
+        if(s){
+            b=s->data;
+        }
+        else{
+            b=0;
+        }
+        cout<<(a+b+carry)%10<<" ";
+        cout<<(a+b+carry)/10<<endl;
+        Node * node = new Node((a+b+carry)%10);
+        // result->data= (a+b+carry)%10;
+        carry = (a+b+carry)/10;
+        ans->next = node;
+        ans = ans->next;
+        if(f){
+            f=f->next;
+        }
+        if(s){
+            s=s->next;
+        }
+        
+    }
+    if(carry != 0){
+        Node* n = new Node(carry);
+        ans->next=n;
+    }
+    return result;
+
+}
+
 int main(){
-    Node* list = new Node(1);
-    Node* list1 = new Node(2);
-    Node* list2 = new Node(3);
-    Node* list3 = new Node(4);
-    Node* list4 = new Node(5);
+    Node* list = new Node(8);
+    Node* list1 = new Node(6);
+    Node* list2 = new Node(9);
+
+    Node* list3 = new Node(9);
+    Node* list4 = new Node(9);
+    // Node* list5 = new Node(9);
+    // Node* list5 = new Node(1);
     // Node* list3 = new Node(12);
     // Node* list4 = new Node(15);
     // Node* list5 = new Node(17);
     list->next=list1;
     list1->next=list2;
-    list2->next = list3;
+    // list2->next = list3;
     list3->next = list4;
     // list4->next = list5;
+    // list4->next = list5;
     printList(list);
-    list = delFirst(list);
-    printList(list);
+    printList(list3);
+    // list = delFirst(list);
+    list = AddLinkedList(list, list3);
+    printList(list->next->next);
     return 0;
 }
