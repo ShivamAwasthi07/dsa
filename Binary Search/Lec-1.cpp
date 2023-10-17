@@ -77,7 +77,7 @@ int main(){
     Solution sol;
     vector <int> v = {5, 1, 2, 3, 4};
     // cout<< sol.binsearch(0, v.size()-1,v ,5);
-    // cout<< sol.mountainFunc(0, v.size()-1,v);
-    cout<< sol.pivotFunction(v);
+    // cout<< sol.mountainFunc(0, v.size.pivo()-1,v);
+    // cout<< soltFunction(v);
     return 0; 
 }
